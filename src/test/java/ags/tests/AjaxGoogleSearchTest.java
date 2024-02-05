@@ -31,15 +31,17 @@ public class AjaxGoogleSearchTest {
 
 		WebElement list=driver.findElement(By.id("search"));
 		List<WebElement> link = list.findElements(By.tagName("a"));
-		int linkCount = link.size();
+//		int linkCount = link.size();
 		
 		Actions a = new Actions(driver);
 		
-		for(int i=0; i<linkCount ; i++) {
-			a.moveToElement(link.get(i)).keyDown(Keys.CONTROL).click().build().perform();
-			if(i == 2) {
-				break;
-			}
-		}
+		link.stream().limit(2).forEach(s -> a.moveToElement(s).keyDown(Keys.CONTROL).click().build().perform());
+		
+//		for(int i=0; i<linkCount ; i++) {
+//			a.moveToElement(link.get(i)).keyDown(Keys.CONTROL).click().build().perform();
+//			if(i == 2) {
+//				break;
+//			}
+//		}
 	}
 }
